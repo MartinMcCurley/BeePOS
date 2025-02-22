@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.Insets?>
+
+<HBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.beepos.controllers.LoginController"
+      stylesheets="@../css/styles.css"
+      styleClass="main-container">
+
+    <!-- Left side with logo -->
+    <VBox styleClass="logo-container" HBox.hgrow="ALWAYS">
+        <ImageView fitWidth="300" preserveRatio="true">
+            <Image url="@/images/beepossolologo.jpg"/>
+        </ImageView>
+    </VBox>
+
+    <!-- Right side with login form -->
+    <VBox styleClass="login-container" spacing="20" HBox.hgrow="ALWAYS">
+        <padding>
+            <Insets top="40" right="40" bottom="40" left="40"/>
+        </padding>
+
+        <Label text="Welcome" styleClass="welcome-text"/>
+
+        <VBox spacing="10">
+            <Label text="Role"/>
+            <ComboBox fx:id="roleComboBox" styleClass="input-field"/>
+        </VBox>
+
+        <VBox spacing="10">
+            <Label text="Username"/>
+            <TextField fx:id="usernameField" styleClass="input-field"/>
+        </VBox>
+
+        <VBox spacing="10">
+            <Label text="Password"/>
+            <PasswordField fx:id="passwordField" styleClass="input-field"/>
+        </VBox>
+
+        <HBox spacing="20" alignment="CENTER">
+            <Button fx:id="loginButton" text="Login" styleClass="action-button"/>
+            <Button fx:id="clearButton" text="Clear" styleClass="action-button"/>
+        </HBox>
+    </VBox>
+</HBox> 

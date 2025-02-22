@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.beepos.controllers.ManagerController"
+           stylesheets="@../css/styles.css"
+           styleClass="main-container">
+
+    <top>
+        <HBox styleClass="header-container">
+            <ImageView fitHeight="50" preserveRatio="true">
+                <Image url="@/images/beepossolologo.jpg"/>
+            </ImageView>
+            <Label text="Manager Panel" styleClass="header-text"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="20" styleClass="manager-container">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <!-- Product Management Section -->
+            <VBox spacing="15">
+                <Label text="Product Management" styleClass="section-header"/>
+                
+                <GridPane hgap="10" vgap="10">
+                    <Label text="Product Name" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <TextField fx:id="productNameField" styleClass="input-field" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                    
+                    <Label text="Quantity" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <TextField fx:id="quantityField" styleClass="input-field" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                    
+                    <Label text="Price" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                    <TextField fx:id="priceField" styleClass="input-field" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                    
+                    <Label text="Category" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                    <ComboBox fx:id="categoryComboBox" styleClass="input-field" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                    
+                    <HBox spacing="10" GridPane.rowIndex="4" GridPane.columnSpan="2">
+                        <Button fx:id="addProductButton" text="Add Product" styleClass="action-button"/>
+                        <Button fx:id="updateProductButton" text="Update Selected" styleClass="action-button"/>
+                        <Button fx:id="deleteProductButton" text="Delete Selected" styleClass="action-button"/>
+                        <Button fx:id="clearFormButton" text="Clear Form" styleClass="action-button"/>
+                    </HBox>
+                </GridPane>
+            </VBox>
+
+            <!-- Product List -->
+            <VBox spacing="10" VBox.vgrow="ALWAYS">
+                <Label text="Inventory" styleClass="section-header"/>
+                <TableView fx:id="productTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="idColumn" text="ID"/>
+                        <TableColumn fx:id="nameColumn" text="Name"/>
+                        <TableColumn fx:id="quantityColumn" text="Quantity"/>
+                        <TableColumn fx:id="priceColumn" text="Price"/>
+                        <TableColumn fx:id="categoryColumn" text="Category"/>
+                    </columns>
+                </TableView>
+            </VBox>
+
+            <!-- Statistics Section -->
+            <VBox spacing="10">
+                <Label text="Statistics" styleClass="section-header"/>
+                <HBox spacing="20">
+                    <VBox styleClass="stat-box">
+                        <Label text="Total Products" styleClass="stat-label"/>
+                        <Label fx:id="totalProductsLabel" text="0" styleClass="stat-value"/>
+                    </VBox>
+                    <VBox styleClass="stat-box">
+                        <Label text="Total Sales" styleClass="stat-label"/>
+                        <Label fx:id="totalSalesLabel" text="£0.00" styleClass="stat-value"/>
+                    </VBox>
+                    <VBox styleClass="stat-box">
+                        <Label text="Low Stock Items" styleClass="stat-label"/>
+                        <Label fx:id="lowStockLabel" text="0" styleClass="stat-value"/>
+                    </VBox>
+                </HBox>
+                <Button fx:id="viewDetailedStatsButton" text="View Detailed Statistics" styleClass="action-button"/>
+            </VBox>
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Button fx:id="logoutButton" text="LOG OUT" styleClass="logout-button"/>
+        </HBox>
+    </bottom>
+</BorderPane> 

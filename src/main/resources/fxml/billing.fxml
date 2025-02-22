@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.beepos.controllers.BillingController"
+           stylesheets="@../css/styles.css"
+           styleClass="main-container">
+
+    <!-- Top Bar with Logo -->
+    <top>
+        <HBox styleClass="header-container">
+            <ImageView fitHeight="50" preserveRatio="true">
+                <Image url="@/images/beepossolologo.jpg"/>
+            </ImageView>
+            <Label text="Billing Point" styleClass="header-text"/>
+        </HBox>
+    </top>
+
+    <center>
+        <HBox spacing="20">
+            <!-- Left Side - Billing Form -->
+            <VBox spacing="15" styleClass="billing-form">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+
+                <VBox spacing="10">
+                    <Label text="Bill ID"/>
+                    <TextField fx:id="billIdField" styleClass="input-field"/>
+                </VBox>
+
+                <VBox spacing="10">
+                    <Label text="Name"/>
+                    <TextField fx:id="nameField" styleClass="input-field"/>
+                </VBox>
+
+                <VBox spacing="10">
+                    <Label text="Quantity"/>
+                    <TextField fx:id="quantityField" styleClass="input-field"/>
+                </VBox>
+
+                <HBox spacing="10">
+                    <Button fx:id="addToBillButton" text="Add to Bill" styleClass="action-button"/>
+                    <Button fx:id="clearButton" text="Clear" styleClass="action-button"/>
+                </HBox>
+            </VBox>
+
+            <!-- Right Side - Product List and Cart -->
+            <VBox spacing="15" HBox.hgrow="ALWAYS">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+
+                <Label text="Product List" styleClass="section-header"/>
+                
+                <TableView fx:id="productTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="prodIdColumn" text="PRODID"/>
+                        <TableColumn fx:id="productNameColumn" text="PRODN"/>
+                        <TableColumn fx:id="stockColumn" text="PRODQTY"/>
+                        <TableColumn fx:id="priceColumn" text="PRODP"/>
+                        <TableColumn fx:id="categoryColumn" text="PRODCAT"/>
+                    </columns>
+                </TableView>
+
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <ComboBox fx:id="filterComboBox" promptText="Drinks"/>
+                    <Button fx:id="filterButton" text="Filter" styleClass="action-button"/>
+                    <Button fx:id="showAllButton" text="Show All" styleClass="action-button"/>
+                </HBox>
+
+                <Label text="Current Bill" styleClass="section-header"/>
+                <TableView fx:id="billTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="billProdIdColumn" text="Product ID"/>
+                        <TableColumn fx:id="billProductNameColumn" text="Name"/>
+                        <TableColumn fx:id="billQuantityColumn" text="Quantity"/>
+                        <TableColumn fx:id="billPriceColumn" text="Price"/>
+                        <TableColumn fx:id="billTotalColumn" text="Total"/>
+                    </columns>
+                </TableView>
+
+                <HBox spacing="10" alignment="CENTER_RIGHT">
+                    <Label text="Total: £" styleClass="total-label"/>
+                    <Label fx:id="totalLabel" text="0.00" styleClass="total-amount"/>
+                    <Button fx:id="clearDbButton" text="ClearDB" styleClass="action-button"/>
+                    <Button fx:id="checkoutButton" text="Checkout" styleClass="action-button"/>
+                    <Button fx:id="statsButton" text="Stats" styleClass="action-button"/>
+                </HBox>
+            </VBox>
+        </HBox>
+    </center>
+
+    <!-- Logout Button at Bottom Left -->
+    <bottom>
+        <HBox alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Button fx:id="logoutButton" text="LOG OUT" styleClass="logout-button"/>
+        </HBox>
+    </bottom>
+</BorderPane> 
